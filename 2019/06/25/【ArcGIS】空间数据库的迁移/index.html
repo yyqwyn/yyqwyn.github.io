@@ -15,18 +15,34 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="IT">
+<meta name="description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种： 方式一. SDE与空间GIS用户一起迁移  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种 方式二. SDE重新新建，GIS通过gdb文件格式导出  本次重点说下这个。 1.s">
+<meta name="keywords" content="ArcGIS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yangyunqiang.com/2019/06/21/hello-world/index.html">
+<meta property="og:title" content="【ArcGIS】GIS空间数据库的迁移">
+<meta property="og:url" content="http://yangyunqiang.com/2019/06/25/【ArcGIS】空间数据库的迁移/index.html">
 <meta property="og:site_name" content="杨云强的个人博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种： 方式一. SDE与空间GIS用户一起迁移  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种 方式二. SDE重新新建，GIS通过gdb文件格式导出  本次重点说下这个。 1.s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-21T08:15:58.223Z">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image001.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image003.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image005.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image007.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image009.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image011.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image014.jpg">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image015.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image017.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image018.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image020.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image022.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image024.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image025.png">
+<meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image026.png">
+<meta property="og:updated_time" content="2019-06-25T10:10:00.594Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="【ArcGIS】GIS空间数据库的迁移">
+<meta name="twitter:description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种： 方式一. SDE与空间GIS用户一起迁移  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种 方式二. SDE重新新建，GIS通过gdb文件格式导出  本次重点说下这个。 1.s">
+<meta name="twitter:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image001.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +74,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello World | 杨云强的个人博客</title>
+<title>【ArcGIS】GIS空间数据库的迁移 | 杨云强的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -258,11 +274,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-【ArcGIS】空间数据库的迁移" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/21/hello-world/" class="article-date">
-      <time datetime="2019-06-21T08:15:58.223Z" itemprop="datePublished">2019-06-21</time>
+      <a href="/2019/06/25/【ArcGIS】空间数据库的迁移/" class="article-date">
+      <time datetime="2019-06-25T07:04:47.000Z" itemprop="datePublished">2019-06-25</time>
 </a>
 
 
@@ -277,7 +293,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      【ArcGIS】GIS空间数据库的迁移
     </h1>
   
 
@@ -287,6 +303,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -294,19 +314,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <p>oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。<br>常规的迁移方式有两种：</p>
+<h3 id="方式一-SDE与空间GIS用户一起迁移"><a href="#方式一-SDE与空间GIS用户一起迁移" class="headerlink" title="方式一. SDE与空间GIS用户一起迁移"></a>方式一. SDE与空间GIS用户一起迁移</h3><p>  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种</p>
+<h3 id="方式二-SDE重新新建，GIS通过gdb文件格式导出"><a href="#方式二-SDE重新新建，GIS通过gdb文件格式导出" class="headerlink" title="方式二. SDE重新新建，GIS通过gdb文件格式导出"></a>方式二. SDE重新新建，GIS通过gdb文件格式导出</h3><p>  本次重点说下这个。</p>
+<h4 id="1-sde新建"><a href="#1-sde新建" class="headerlink" title="1.sde新建"></a>1.sde新建</h4><p>  步骤它文另表。注意事项：<br>  需要在sde用户下创建library ST_SHAPELIB，地址改成具体路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create or replace library ST_SHAPELIB as&apos;/oracle/11.2.3/grid/lib/libst_shapelib.so&apos;;</span><br><span class="line">alter package sde.st_geometry_shapelib_pkg compile reuse settings;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h4 id="2-导出gdb格式文件"><a href="#2-导出gdb格式文件" class="headerlink" title="2.导出gdb格式文件"></a>2.导出gdb格式文件</h4><p><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image001.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image003.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image005.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image007.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image009.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image011.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image014.jpg" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image015.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image017.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image018.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image020.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image022.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image024.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image025.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image026.png" alt="image"></p>
 
       
     </div>
@@ -315,13 +329,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/21/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/25/【ArcGIS】空间数据库的迁移/">【ArcGIS】GIS空间数据库的迁移</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">杨云强</a></p>
-        <p><span>发布时间:</span>2019-06-21, 16:15:58</p>
-        <p><span>最后更新:</span>2019-06-21, 16:15:58</p>
+        <p><span>发布时间:</span>2019-06-25, 15:04:47</p>
+        <p><span>最后更新:</span>2019-06-25, 18:10:00</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/21/hello-world/" title="Hello World">http://yangyunqiang.com/2019/06/21/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/2019/06/21/hello-world/　　作者: 杨云强" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/25/【ArcGIS】空间数据库的迁移/" title="【ArcGIS】GIS空间数据库的迁移">http://yangyunqiang.com/2019/06/25/【ArcGIS】空间数据库的迁移/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/2019/06/25/【ArcGIS】空间数据库的迁移/　　作者: 杨云强" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -333,12 +347,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/06/21/Hello,New Life/">
-                    Hello , New Life!
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/06/25/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/">
+                    【Hexo】Spawn failed fatal: LF would be replaced by CRLF
                 </a>
             </div>
-        
         
     </nav>
 
@@ -348,7 +362,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一-SDE与空间GIS用户一起迁移"><span class="toc-number">1.</span> <span class="toc-text">方式一. SDE与空间GIS用户一起迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二-SDE重新新建，GIS通过gdb文件格式导出"><span class="toc-number">2.</span> <span class="toc-text">方式二. SDE重新新建，GIS通过gdb文件格式导出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-sde新建"><span class="toc-number">2.1.</span> <span class="toc-text">1.sde新建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-导出gdb格式文件"><span class="toc-number">2.2.</span> <span class="toc-text">2.导出gdb格式文件</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -384,7 +398,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello World　| 杨云强的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"【ArcGIS】GIS空间数据库的迁移　| 杨云强的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -404,15 +418,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/06/21/Hello,New Life/" title="上一篇: Hello , New Life!">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/06/25/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/" title="下一篇: 【Hexo】Spawn failed fatal: LF would be replaced by CRLF">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
