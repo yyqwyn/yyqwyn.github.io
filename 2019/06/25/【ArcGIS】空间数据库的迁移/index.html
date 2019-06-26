@@ -11,17 +11,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no">
-<meta name="author" content="杨云强">
+<meta name="author" content="Tyler Yang">
 
 
 
-<meta name="description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种： 方式一. SDE与空间GIS用户一起迁移  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种 方式二. SDE重新新建，GIS通过gdb文件格式导出  本次重点说下这个。 1.s">
+<meta name="description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种：1.SDE与空间GIS用户一起迁移;2.SDE重建，GIS通过gdb文件格式导出">
 <meta name="keywords" content="ArcGIS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【ArcGIS】GIS空间数据库的迁移">
 <meta property="og:url" content="http://yangyunqiang.com/2019/06/25/【ArcGIS】空间数据库的迁移/index.html">
-<meta property="og:site_name" content="杨云强的个人博客">
-<meta property="og:description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种： 方式一. SDE与空间GIS用户一起迁移  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种 方式二. SDE重新新建，GIS通过gdb文件格式导出  本次重点说下这个。 1.s">
+<meta property="og:site_name" content="IT小白的个人博客">
+<meta property="og:description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种：1.SDE与空间GIS用户一起迁移;2.SDE重建，GIS通过gdb文件格式导出">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image001.png">
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image003.png">
@@ -38,16 +38,16 @@
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image024.png">
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image025.png">
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image026.png">
-<meta property="og:updated_time" content="2019-06-25T10:10:00.594Z">
+<meta property="og:updated_time" content="2019-06-26T15:50:32.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【ArcGIS】GIS空间数据库的迁移">
-<meta name="twitter:description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种： 方式一. SDE与空间GIS用户一起迁移  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种 方式二. SDE重新新建，GIS通过gdb文件格式导出  本次重点说下这个。 1.s">
+<meta name="twitter:description" content="oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。常规的迁移方式有两种：1.SDE与空间GIS用户一起迁移;2.SDE重建，GIS通过gdb文件格式导出">
 <meta name="twitter:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image001.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
-    <link rel="alternate" href="/atom.xml" title="杨云强的个人博客" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="IT小白的个人博客" type="application/atom+xml">
 
 
 
@@ -74,7 +74,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>【ArcGIS】GIS空间数据库的迁移 | 杨云强的个人博客</title>
+<title>【ArcGIS】GIS空间数据库的迁移 | IT小白的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -117,7 +117,7 @@
             <img src="/img/avatar.png" class="animated zoomIn">
         </a>
         <hgroup>
-          <h1 class="header-author"><a href="/">杨云强</a></h1>
+          <h1 class="header-author"><a href="/">Tyler Yang</a></h1>
         </hgroup>
 
         
@@ -241,7 +241,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">杨云强</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Tyler Yang</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -249,7 +249,7 @@
                 <img src="/img/avatar.png" class="animated zoomIn">
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">杨云强</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页">Tyler Yang</a></h1>
             </hgroup>
             
             <nav class="header-menu">
@@ -321,13 +321,15 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。<br>常规的迁移方式有两种：</p>
+        <p>oracle数据库迁移当需要迁移时，要注意gis库的迁移方式，与普通的数据库用户迁移存在区别。<br>常规的迁移方式有两种：1.SDE与空间GIS用户一起迁移;2.SDE重建，GIS通过gdb文件格式导出</p>
+<a id="more"></a>
 <h3 id="方式一-SDE与空间GIS用户一起迁移"><a href="#方式一-SDE与空间GIS用户一起迁移" class="headerlink" title="方式一. SDE与空间GIS用户一起迁移"></a>方式一. SDE与空间GIS用户一起迁移</h3><p>  就是dump模式，但是要将所有gis用户连同sde用户一起迁移，容易出错，迁移过一次，但报错，上午arcgis厂家老师说是可以，可以尝试，不行再用第二种</p>
-<h3 id="方式二-SDE重新新建，GIS通过gdb文件格式导出"><a href="#方式二-SDE重新新建，GIS通过gdb文件格式导出" class="headerlink" title="方式二. SDE重新新建，GIS通过gdb文件格式导出"></a>方式二. SDE重新新建，GIS通过gdb文件格式导出</h3><p>  本次重点说下这个。</p>
-<h4 id="1-sde新建"><a href="#1-sde新建" class="headerlink" title="1.sde新建"></a>1.sde新建</h4><p>  步骤它文另表。注意事项：<br>  需要在sde用户下创建library ST_SHAPELIB，地址改成具体路径</p>
+<h3 id="方式二-SDE重新创建，GIS通过gdb文件格式导出"><a href="#方式二-SDE重新创建，GIS通过gdb文件格式导出" class="headerlink" title="方式二. SDE重新创建，GIS通过gdb文件格式导出"></a>方式二. SDE重新创建，GIS通过gdb文件格式导出</h3><p>  本次重点说下这个。</p>
+<h4 id="1-SDE新建"><a href="#1-SDE新建" class="headerlink" title="1.SDE新建"></a>1.SDE新建</h4><p>  步骤它文另表。注意事项：<br>  需要在sde用户下创建library ST_SHAPELIB，地址改成具体路径</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create or replace library ST_SHAPELIB as&apos;/oracle/11.2.3/grid/lib/libst_shapelib.so&apos;;</span><br><span class="line">alter package sde.st_geometry_shapelib_pkg compile reuse settings;</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-导出gdb格式文件"><a href="#2-导出gdb格式文件" class="headerlink" title="2.导出gdb格式文件"></a>2.导出gdb格式文件</h4><p><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image001.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image003.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image005.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image007.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image009.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image011.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image014.jpg" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image015.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image017.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image018.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image020.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image022.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image024.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image025.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image026.png" alt="image"></p>
+<h4 id="2-导出gdb格式文件"><a href="#2-导出gdb格式文件" class="headerlink" title="2.导出gdb格式文件"></a>2.导出gdb格式文件</h4><p>打开arccatalog，建立数据库连接，右键导出，export-&gt;To Geodatabase（multiple）<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image001.png" alt="image"><br><br><br><br>如果选中整个连接，出现界面会默认选中整个链接包含的gis表，可选择不要的进行剔除<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image003.png" alt="image"><br><br><br><br>也可以链接具体数据库后挨个选择需要表项<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image005.png" alt="image"><br><br><br><br>然后右下角输出文件，选择对应的输出目录<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image007.png" alt="image"><br><br><br><br>建立gdb文件<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image009.png" alt="image"><br><br><br><br>选中添加<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image011.png" alt="image"><br><br><br><br>点击ok完成<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image014.jpg" alt="image"><br><br><br><br>Geoprocessing里可以看到对应的结果（导入同理）<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image015.png" alt="image"><br><br><br><br>结果页面包含当前任务及历史任务（导入同理）<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image017.png" alt="image"><br><br><br><br>打开当前任务，查看messages可以看到导出进度（导入同理）<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image018.png" alt="image"><br><br></p>
+<h4 id="3-导入gdb格式文件"><a href="#3-导入gdb格式文件" class="headerlink" title="3.导入gdb格式文件"></a>3.导入gdb格式文件</h4><p>导入即导出反向操作，选择具体库，import<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image020.png" alt="image"><br><br><br><br>点击添加具体gdb文件<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image022.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image024.png" alt="image"><br><br><br><br>选择具体需导入表<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image025.png" alt="image"><br><br><br><br>点击ok进行导入，结果参考导出查看页面<br><br><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1906/image026.png" alt="image"></p>
 
       
     </div>
@@ -337,12 +339,12 @@
     
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2019/06/25/【ArcGIS】空间数据库的迁移/">【ArcGIS】GIS空间数据库的迁移</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">杨云强</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Tyler Yang</a></p>
         <p><span>发布时间:</span>2019-06-25, 15:04:47</p>
-        <p><span>最后更新:</span>2019-06-25, 18:10:00</p>
+        <p><span>最后更新:</span>2019-06-26, 23:50:32</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/06/25/【ArcGIS】空间数据库的迁移/" title="【ArcGIS】GIS空间数据库的迁移">http://yangyunqiang.com/2019/06/25/【ArcGIS】空间数据库的迁移/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/2019/06/25/【ArcGIS】空间数据库的迁移/　　作者: 杨云强" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/2019/06/25/【ArcGIS】空间数据库的迁移/　　作者: Tyler Yang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -369,7 +371,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一-SDE与空间GIS用户一起迁移"><span class="toc-number">1.</span> <span class="toc-text">方式一. SDE与空间GIS用户一起迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二-SDE重新新建，GIS通过gdb文件格式导出"><span class="toc-number">2.</span> <span class="toc-text">方式二. SDE重新新建，GIS通过gdb文件格式导出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-sde新建"><span class="toc-number">2.1.</span> <span class="toc-text">1.sde新建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-导出gdb格式文件"><span class="toc-number">2.2.</span> <span class="toc-text">2.导出gdb格式文件</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一-SDE与空间GIS用户一起迁移"><span class="toc-number">1.</span> <span class="toc-text">方式一. SDE与空间GIS用户一起迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二-SDE重新创建，GIS通过gdb文件格式导出"><span class="toc-number">2.</span> <span class="toc-text">方式二. SDE重新创建，GIS通过gdb文件格式导出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-SDE新建"><span class="toc-number">2.1.</span> <span class="toc-text">1.SDE新建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-导出gdb格式文件"><span class="toc-number">2.2.</span> <span class="toc-text">2.导出gdb格式文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-导入gdb格式文件"><span class="toc-number">2.3.</span> <span class="toc-text">3.导入gdb格式文件</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -405,7 +407,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"【ArcGIS】GIS空间数据库的迁移　| 杨云强的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"【ArcGIS】GIS空间数据库的迁移　| IT小白的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -451,7 +453,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016-2019 杨云强
+                2016-2019 Tyler Yang
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
