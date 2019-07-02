@@ -42,7 +42,7 @@ var _hmt = _hmt || [];
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1907/image001.png">
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1907/image005.png">
 <meta property="og:image" content="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1907/image006.png">
-<meta property="og:updated_time" content="2019-07-02T09:58:22.444Z">
+<meta property="og:updated_time" content="2019-07-02T10:21:25.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明">
 <meta name="twitter:description" content="上周进行数据库迁移，但迁移后老库对应图层加载明显比新库快很多。查了两天时间没查出原因。 第一个层面:oracle比较两边sql的执行计划，发现唯一的区别是连接方式，新库是sort，老库是hash从数据库层面：由oracle原厂人员给出alter system set “_gby_hash_aggregation_enabled”=true;将sort模式改为hash模式，简单查了下资料，是说sor">
@@ -336,8 +336,10 @@ var _hmt = _hmt || [];
       
           
         <p>上周进行数据库迁移，但迁移后老库对应图层加载明显比新库快很多。查了两天时间没查出原因。</p>
-<h4 id="第一个层面-oracle"><a href="#第一个层面-oracle" class="headerlink" title="第一个层面:oracle"></a>第一个层面:oracle</h4><p>比较两边sql的执行计划，发现唯一的区别是连接方式，新库是sort，老库是hash<br>从数据库层面：由oracle原厂人员给出<br><br><br>alter system set “_gby_hash_aggregation_enabled”=true;<br>将sort模式改为hash模式，简单查了下资料，是说sort在小表查询层面较快，hash在大表查询方面较快；</p>
-<h4 id="第二个层面-arcgis分析"><a href="#第二个层面-arcgis分析" class="headerlink" title="第二个层面:arcgis分析"></a>第二个层面:arcgis分析</h4><p>arcgis原厂人员协助检查，提供了一个插件PerfQA-Analyzer，简直是利器。安装时可能会提示缺失dotNetFx40_Full_x86_x64，安装dotNet需重启。然后一步步安装即可</p>
+<h4 id="第一个层面-oracle"><a href="#第一个层面-oracle" class="headerlink" title="第一个层面:oracle"></a>第一个层面:oracle</h4><p>比较两边sql的执行计划，发现唯一的区别是连接方式，新库是sort，老库是hash<br>从数据库层面：由oracle原厂人员给出<br>alter system set “_gby_hash_aggregation_enabled”=true;<br>将sort模式改为hash模式，简单查了下资料，是说sort在小表查询层面较快，hash在大表查询方面较快；</p>
+<h4 id="第二个层面-arcgis分析"><a href="#第二个层面-arcgis分析" class="headerlink" title="第二个层面:arcgis分析"></a>第二个层面:arcgis分析</h4><a id="more"></a>
+
+<p>arcgis原厂人员协助检查，提供了一个插件PerfQA-Analyzer，简直是利器。安装时可能会提示缺失dotNetFx40_Full_x86_x64，安装dotNet需重启。然后一步步安装即可</p>
 <h5 id="1-安装后打开ArcMap，如图操作打开插件"><a href="#1-安装后打开ArcMap，如图操作打开插件" class="headerlink" title="1.安装后打开ArcMap，如图操作打开插件"></a>1.安装后打开ArcMap，如图操作打开插件</h5><p><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1907/image003.png" alt="image"></p>
 <h5 id="2-打开后会在界面显示，点击第一个方格会显示具体界面，点击绿色图标会开启"><a href="#2-打开后会在界面显示，点击第一个方格会显示具体界面，点击绿色图标会开启" class="headerlink" title="2.打开后会在界面显示，点击第一个方格会显示具体界面，点击绿色图标会开启"></a>2.打开后会在界面显示，点击第一个方格会显示具体界面，点击绿色图标会开启</h5><p><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1907/image001.png" alt="image"></p>
 <h5 id="3-具体界面如下，当拖动图层，会显示出加载具体数据源数据的时间，当前以秒显示"><a href="#3-具体界面如下，当拖动图层，会显示出加载具体数据源数据的时间，当前以秒显示" class="headerlink" title="3.具体界面如下，当拖动图层，会显示出加载具体数据源数据的时间，当前以秒显示"></a>3.具体界面如下，当拖动图层，会显示出加载具体数据源数据的时间，当前以秒显示</h5><p><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1907/image005.png" alt="image"><br><img src="https://yyq-1257262228.cos.ap-beijing.myqcloud.com/1907/image006.png" alt="image"></p>
@@ -353,7 +355,7 @@ var _hmt = _hmt || [];
         <p><span>本文标题:</span><a href="/2019/07/02/【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明/">【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Tyler Yang</a></p>
         <p><span>发布时间:</span>2019-07-02, 17:49:08</p>
-        <p><span>最后更新:</span>2019-07-02, 17:58:22</p>
+        <p><span>最后更新:</span>2019-07-02, 18:21:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/07/02/【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明/" title="【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明">http://yangyunqiang.com/2019/07/02/【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/2019/07/02/【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明/　　作者: Tyler Yang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
