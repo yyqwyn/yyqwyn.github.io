@@ -217,7 +217,7 @@ var _hmt = _hmt || [];
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcMap/">ArcMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS-ArcSDE/">ArcGIS,ArcSDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcMap/">ArcMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li></ul>
                     </div>
                 </section>
                 
@@ -313,7 +313,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/arcgis03/">arcgis03</a>
+      <a class="article-title" href="/arcgis03/">ArcGIS10.2安装部分错误汇总</a>
     </h1>
   
 
@@ -323,7 +323,14 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h1 id="一-错误1911-无法将文件C-Program-Files-x86-Common-Files-Microsoft-Shared-Ink-InkDiv-dll注册到类型库中"><a href="#一-错误1911-无法将文件C-Program-Files-x86-Common-Files-Microsoft-Shared-Ink-InkDiv-dll注册到类型库中" class="headerlink" title="一.错误1911.无法将文件C:\Program Files(x86)\Common Files\Microsoft Shared\Ink\InkDiv.dll注册到类型库中."></a>一.错误1911.无法将文件C:\Program Files(x86)\Common Files\Microsoft Shared\Ink\InkDiv.dll注册到类型库中.</h1><p>请于您的技术支持人员联系<br><img src="yyqwyn.coding.me/img/1908/ArcGIS03-00.png" alt="image"><br>这是安装Desktop时报的提示，去Shared文件夹下，是的确没有Ink文件夹，创建后，又根据搜到结果说下个dll放进去，好像也不行，然后又听从某博主文章说的，直接忽略，后续好像也没有影响，不了了解继续了。</p>
+<h1 id="二-登录用户不正确，执行（CreateEnterpriseGeodatabase）失败"><a href="#二-登录用户不正确，执行（CreateEnterpriseGeodatabase）失败" class="headerlink" title="二.登录用户不正确，执行（CreateEnterpriseGeodatabase）失败"></a>二.登录用户不正确，执行（CreateEnterpriseGeodatabase）失败</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-01.png" alt="image"><br>这个是在创建地市信息库时的报错，也就是创建sde时提示sys用户登录不正确，昨天问题记不清了，应该是密码错误。因为是自己本机，直接sqlplus / as sysdba改了sys密码就可以了。但又报ora-01031:insufficient privileges，我本机的sys无法登录sysdba执行sysdba操作<br><br>参考链接<a href="https://blog.csdn.net/lyjiau/article/details/52239126" target="_blank" rel="noopener">（ora-01031:insufficient privileges解决方法总结 ）</a><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注意多个数据库实例时候，set　ORACLE_SID=&apos;&apos;,</span><br><span class="line">1、检查sqlnet.ora（WINDOWS下位于%ORACLE_HOME%NETWORKADMIN目录）是否包含这句：SQLNET.AUTHENTICATION_SERVICES=(NTS)，没有的话加上</span><br><span class="line">2、检查登陆windows的用户(administrator或安装oracle时候使用的用户)是不是在包含在ORA_DBA组中，域用户没有连上域服务器时就可能出现这种现象。</span><br><span class="line">3. 要保证 remote_login_passwordfile 参数 = EXCLUSIVE .</span><br><span class="line">4. 看看是否需要使用orapassw生成口令文件</span><br></pre></td></tr></table></figure>
+
+<p>我的问题是第二个，其实就是我本机由于是公司配发的统一机器，是在域用户下，在用户账户管理里面搜不到我的用户，然后我登录公司vpn，然后在搜账户home/yyq ,然后就可以搜到了，加入ora_dba组中，这时就可以断vpn了，sys可以访问sysdba了。</p>
+<h1 id="三-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在"><a href="#三-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在" class="headerlink" title="三.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在"></a>三.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-02.png" alt="image"><br>一看这错误简直高大上，对象不存在，是不是一脸懵，其实吧，是源于第二个错误的报错，导致创建sde一半失败，删了sde用户，然后关了catalog重新操作即可</p>
+<h1 id="最后-完美舒畅"><a href="#最后-完美舒畅" class="headerlink" title="最后.完美舒畅"></a>最后.完美舒畅</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-03.png" alt="image"></p>
+
       
     </div>
     
@@ -332,6 +339,10 @@ var _hmt = _hmt || [];
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcGIS-ArcSDE/">ArcGIS,ArcSDE</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
