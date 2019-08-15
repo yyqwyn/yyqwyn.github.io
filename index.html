@@ -217,7 +217,7 @@ var _hmt = _hmt || [];
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS-ArcSDE/">ArcGIS,ArcSDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcMap/">ArcMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcMap/">ArcMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcSDE/">ArcSDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li></ul>
                     </div>
                 </section>
                 
@@ -294,6 +294,256 @@ var _hmt = _hmt || [];
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Windows-Windows01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/Windows-Windows01/" class="article-date">
+      <time datetime="2019-08-14T08:28:08.000Z" itemprop="datePublished">2019-08-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Windows-Windows01/">[Windows]Windows01</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>type nul&gt; test.txt</p>
+<p>创建名为test.txt的文件</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/python01/" class="article-date">
+      <time datetime="2019-08-13T08:02:12.000Z" itemprop="datePublished">2019-08-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/python01/">【Python】小白学Python遇到的问题整理汇总</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>总结下自己在学习Python过程中遇到的一些错误与解决办法</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+        <p class="article-more-link">
+          <a href="/python01/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Oracle01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/Oracle01/" class="article-date">
+      <time datetime="2019-08-09T03:48:38.000Z" itemprop="datePublished">2019-08-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Oracle01/">【Oracle】Oracle问题记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>参考：<a href="https://blog.csdn.net/ccq901027/article/details/68059795" target="_blank" rel="noopener">oracle删除表后产生BIN开头的表</a></p>
+<p>从oracle10g开始删除数据库表的时候不是真正删除，而是放到了recyclebin中，这个过程类似windows删除文件放到了回收站。<br>删除表后系统会自动的给这些表重命名，就是你看到的【BIN$】开头的表。<br>通过show recyclebin 命令可以查看删除的表的详细信息，或者查询<br>select * from recyclebin;<br>撤销删除表的命令 flashback table 原表名 to before drop;<br>清空回收站的命令 purge recyclebin;</p>
+<p>如果你想删除的表不经过回收站，可以用 drop table 表名 purge;<br>或者停用数据库的回收功能，需要修改隐藏参数 _recyclebin<br>alert system set ‘_recyclebin’=false; ——10.1版本 </p>
+<h2 id="alert-system-set-recyclebin-off-——10-2版本"><a href="#alert-system-set-recyclebin-off-——10-2版本" class="headerlink" title="alert system set recyclebin =off; ——10.2版本"></a>alert system set recyclebin =off; ——10.2版本</h2><p>版权声明：本文为CSDN博主「chencq_blog」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/ccq901027/article/details/68059795" target="_blank" rel="noopener">https://blog.csdn.net/ccq901027/article/details/68059795</a></p>
+<p>查询所有此类表</p>
+<p>SQL&gt; select * from recyclebin where type=’TABLE’;</p>
+<p>  SQL&gt;PURGE RECYCLEBIN</p>
+<p>用来删除回收站中所有的表</p>
+<p>SQL&gt;PURGE TABLE TABLE_NAME</p>
+<p>用来删除指定的表</p>
+<p>SQL&gt; FLASHBACK TABLE table_name TO BEFORE DROP;</p>
+<p>用来闪回被删除的表  </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hexo01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/hexo01/" class="article-date">
+      <time datetime="2019-08-09T03:16:04.913Z" itemprop="datePublished">2019-08-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>title: [Hexo]常见错误汇总<br>date: 2019-08-09 11:16:06<br>tags: hexo</p>
+<h1 id="Error-Spawn-failed-at-ChildProcess"><a href="#Error-Spawn-failed-at-ChildProcess" class="headerlink" title="Error: Spawn failed,at ChildProcess"></a>Error: Spawn failed,at ChildProcess</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 3.79 s</span><br><span class="line">INFO  0 files generated in 4.97 s</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br><span class="line">ssh_dispatch_run_fatal: Connection to 52.74.223.119 port 22: Software caused connection abort</span><br><span class="line">fatal: Could not read from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Error-fatal-Not-a-git-repository-or-any-of-the-parent-directories-git"><a href="#Error-fatal-Not-a-git-repository-or-any-of-the-parent-directories-git" class="headerlink" title="Error: fatal: Not a git repository (or any of the parent directories): .git"></a>Error: fatal: Not a git repository (or any of the parent directories): .git</h1><p>配置<strong>Deployment</strong></p>
+<p>首先，你需要为自己配置身份信息，打开命令行，然后输入：</p>
+<ul>
+<li><em>git config –global user.name “yourname”</em></li>
+<li>git config –global user.email “youremail”*</li>
+</ul>
+<p>以上做完还不行<br>删掉根目录下的文件夹：.deploy_git，重新deploy就可以了。 </p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-arcgis03" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -328,7 +578,19 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注意多个数据库实例时候，set　ORACLE_SID=&apos;&apos;,</span><br><span class="line">1、检查sqlnet.ora（WINDOWS下位于%ORACLE_HOME%NETWORKADMIN目录）是否包含这句：SQLNET.AUTHENTICATION_SERVICES=(NTS)，没有的话加上</span><br><span class="line">2、检查登陆windows的用户(administrator或安装oracle时候使用的用户)是不是在包含在ORA_DBA组中，域用户没有连上域服务器时就可能出现这种现象。</span><br><span class="line">3. 要保证 remote_login_passwordfile 参数 = EXCLUSIVE .</span><br><span class="line">4. 看看是否需要使用orapassw生成口令文件</span><br></pre></td></tr></table></figure>
 
 <p>我的问题是第二个，其实就是我本机由于是公司配发的统一机器，是在域用户下，在用户账户管理里面搜不到我的用户，然后我登录公司vpn，然后在搜账户home/yyq ,然后就可以搜到了，加入ora_dba组中，这时就可以断vpn了，sys可以访问sysdba了。</p>
-<h1 id="三-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在"><a href="#三-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在" class="headerlink" title="三.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在"></a>三.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-02.png" alt="image"><br>一看这错误简直高大上，对象不存在，是不是一脸懵，其实吧，是源于第二个错误的报错，导致创建sde一半失败，删了sde用户，然后关了catalog重新操作即可</p>
+<h1 id="三-ArcGIS-无法创建SDE：Failed-to-setup-st-geometry-type"><a href="#三-ArcGIS-无法创建SDE：Failed-to-setup-st-geometry-type" class="headerlink" title="三.ArcGIS 无法创建SDE：Failed to setup st_geometry type."></a>三.ArcGIS 无法创建SDE：Failed to setup st_geometry type.</h1><p>解决方案（<a href="http://blog.csdn.net/editcue/article/details/19037277" target="_blank" rel="noopener">http://blog.csdn.net/editcue/article/details/19037277</a>）：<br>报了类似的错误<br>could not create geodatabase tables and stored procedures<br>Failed to setup st_geometry type.Unable to load Type st_geometry, underlying DBMS error encountered.<br>解决办法：<br><a href="http://support.esri.com/en/knowledgebase/techarticles/detail/38961" target="_blank" rel="noopener">http://support.esri.com/en/knowledgebase/techarticles/detail/38961</a><br>里面说由于有表引用到 st_geometry 导致 st_geometry 创建失败。<br>只需要执行这句sql：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT OWNER, NAME, TYPE FROM DBA_DEPENDENCIES WHERE REFERENCED_OWNER=&apos;MDSYS&apos; AND REFERENCED_NAME  = &apos;ST_GEOMETRY&apos; AND REFERENCED_TYPE  = &apos;TYPE&apos; AND TYPE=&apos;TABLE&apos;;</span><br><span class="line">drop table &quot;tableName&quot; purge；</span><br></pre></td></tr></table></figure>
+
+<p>然后把查到的表drop和purge掉即可。</p>
+<p>如果不用purge会进入recyclebin中，需要查到后删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--查询所有此类表</span><br><span class="line">select * from recyclebin where type=&apos;TABLE&apos;;</span><br><span class="line">--用来删除指定的表</span><br><span class="line">PURGE TABLE TABLE_NAME</span><br></pre></td></tr></table></figure>
+
+<h1 id="四-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在"><a href="#四-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在" class="headerlink" title="四.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在"></a>四.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-02.png" alt="image"><br>一看这错误简直高大上，对象不存在，是不是一脸懵，其实吧，是源于第三个错误的报错，导致创建sde一半失败，删了sde用户，然后关了catalog重新操作即可</p>
+<p>参考链接：<a href="https://support.esri.com/en/technical-article/000011577" target="_blank" rel="noopener">错误：对象INSTANCES_UTIL不存在 </a></p>
+<h1 id="五-dbtune-sde位置"><a href="#五-dbtune-sde位置" class="headerlink" title="五.dbtune.sde位置"></a>五.dbtune.sde位置</h1><p>这个是在配置分区表索引时用到的，尽管还没解决，先记下，在desktop或server的DatabaseSupport\DB2zOS里面</p>
+<h1 id="六-关于分区表（待研究）"><a href="#六-关于分区表（待研究）" class="headerlink" title="六.关于分区表（待研究）"></a>六.关于分区表（待研究）</h1><p>参考链接：<a href="http://desktop.arcgis.com/zh-cn/arcmap/latest/manage-data/using-sql-with-gdbs/spatial-indexes-and-stgeometry.htm" target="_blank" rel="noopener">空间索引和 ST_Geometry</a></p>
+<p><a href="https://blog.csdn.net/linghe301/article/details/7177286" target="_blank" rel="noopener">怎么在ArcSDE中使用Oracle分区表</a></p>
+<p><a href="https://blog.csdn.net/skink/article/details/2343662" target="_blank" rel="noopener">ArcSDE Oracle的存储DBTune配置</a></p>
 <h1 id="最后-完美舒畅"><a href="#最后-完美舒畅" class="headerlink" title="最后.完美舒畅"></a>最后.完美舒畅</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-03.png" alt="image"></p>
 
       
@@ -340,7 +602,7 @@ var _hmt = _hmt || [];
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcGIS-ArcSDE/">ArcGIS,ArcSDE</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcSDE/">ArcSDE</a></li></ul>
     </div>
 
       
@@ -696,132 +958,10 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Hello,New Life" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/Hello,New Life/" class="article-date">
-      <time datetime="2019-06-21T12:01:28.000Z" itemprop="datePublished">2019-06-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Hello,New Life/">Hello , New Life!</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>  这是一篇写于2019年6月25日凌晨的博文。<br>  几天出差加班，断断续续搞了几天博客才正式开门。结果今天才得空写博客的序。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日记/">日记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/Hello,New Life/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/hello-world/" class="article-date">
-      <time datetime="2019-06-21T08:15:58.223Z" itemprop="datePublished">2019-06-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/hello-world/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

@@ -2,9 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yangyunqiang.com/hexo01/</loc>
+    
+    <lastmod>2019-08-15T03:06:58.238Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangyunqiang.com/python01/</loc>
+    
+    <lastmod>2019-08-14T09:10:02.751Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangyunqiang.com/Windows-Windows01/</loc>
+    
+    <lastmod>2019-08-14T08:28:57.111Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yangyunqiang.com/arcgis03/</loc>
     
-    <lastmod>2019-08-09T03:17:57.745Z</lastmod>
+    <lastmod>2019-08-09T05:07:55.390Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yangyunqiang.com/Oracle01/</loc>
+    
+    <lastmod>2019-08-09T05:02:56.540Z</lastmod>
     
   </url>
   

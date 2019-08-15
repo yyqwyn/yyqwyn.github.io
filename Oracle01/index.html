@@ -30,18 +30,18 @@ var _hmt = _hmt || [];
 
 
 
-<meta name="description" content="123456789fatal: LF would be replaced by CRLF in 2019/06/21/hello-world/index.htmlFATAL Something&amp;apos;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.htmlError: Spa">
-<meta name="keywords" content="Hexo">
+<meta name="description" content="参考：oracle删除表后产生BIN开头的表 从oracle10g开始删除数据库表的时候不是真正删除，而是放到了recyclebin中，这个过程类似windows删除文件放到了回收站。删除表后系统会自动的给这些表重命名，就是你看到的【BIN$】开头的表。通过show recyclebin 命令可以查看删除的表的详细信息，或者查询select * from recyclebin;撤销删除表的命令 f">
+<meta name="keywords" content="Oracle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Hexo】Spawn failed fatal: LF would be replaced by CRLF">
-<meta property="og:url" content="http://yangyunqiang.com/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/index.html">
+<meta property="og:title" content="【Oracle】Oracle问题记录">
+<meta property="og:url" content="http://yangyunqiang.com/Oracle01/index.html">
 <meta property="og:site_name" content="IT小白的个人博客">
-<meta property="og:description" content="123456789fatal: LF would be replaced by CRLF in 2019/06/21/hello-world/index.htmlFATAL Something&amp;apos;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.htmlError: Spa">
+<meta property="og:description" content="参考：oracle删除表后产生BIN开头的表 从oracle10g开始删除数据库表的时候不是真正删除，而是放到了recyclebin中，这个过程类似windows删除文件放到了回收站。删除表后系统会自动的给这些表重命名，就是你看到的【BIN$】开头的表。通过show recyclebin 命令可以查看删除的表的详细信息，或者查询select * from recyclebin;撤销删除表的命令 f">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T15:51:35.408Z">
+<meta property="og:updated_time" content="2019-08-09T05:02:56.540Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Hexo】Spawn failed fatal: LF would be replaced by CRLF">
-<meta name="twitter:description" content="123456789fatal: LF would be replaced by CRLF in 2019/06/21/hello-world/index.htmlFATAL Something&amp;apos;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.htmlError: Spa">
+<meta name="twitter:title" content="【Oracle】Oracle问题记录">
+<meta name="twitter:description" content="参考：oracle删除表后产生BIN开头的表 从oracle10g开始删除数据库表的时候不是真正删除，而是放到了recyclebin中，这个过程类似windows删除文件放到了回收站。删除表后系统会自动的给这些表重命名，就是你看到的【BIN$】开头的表。通过show recyclebin 命令可以查看删除的表的详细信息，或者查询select * from recyclebin;撤销删除表的命令 f">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -71,7 +71,7 @@ var _hmt = _hmt || [];
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>【Hexo】Spawn failed fatal: LF would be replaced by CRLF | IT小白的个人博客</title>
+<title>【Oracle】Oracle问题记录 | IT小白的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -290,11 +290,11 @@ var _hmt = _hmt || [];
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Oracle01" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/" class="article-date">
-      <time datetime="2019-06-24T16:49:13.000Z" itemprop="datePublished">2019-06-25</time>
+      <a href="/Oracle01/" class="article-date">
+      <time datetime="2019-08-09T03:48:38.000Z" itemprop="datePublished">2019-08-09</time>
 </a>
 
 
@@ -309,7 +309,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      【Hexo】Spawn failed fatal: LF would be replaced by CRLF
+      【Oracle】Oracle问题记录
     </h1>
   
 
@@ -320,7 +320,7 @@ var _hmt = _hmt || [];
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/">Oracle</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -330,13 +330,18 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
           
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fatal: LF would be replaced by CRLF in 2019/06/21/hello-world/index.html</span><br><span class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">Error: Spawn failed</span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (</span><br><span class="line">    D:\\blog\Hexo\node_modules\hexo-util\lib\spawn.js:52:19)</span><br><span class="line">    at emitTwo (events.js:106:13)</span><br><span class="line">    at ChildProcess.emit (events.js:191:7)</span><br><span class="line">    at ChildProcess.cp.emit (D:\blog\Hexo\node_modules\cross-spawn\lib\enoent.js:40:29)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:215:12)</span><br></pre></td></tr></table></figure>
-
- <a id="more"></a>
-<p>折磨了我4天的问题，结果我一直搜的是 Error: Spawn failed at ChildProcess.<anonymous> ，搜了N多方法，无效。昨晚查了下老错误“fatal: LF would be replaced by CRLF”<br>在.git文件夹下打开config配置文件，添加上下面两句话：<br>autocrlf = false<br>safecrlf = false</anonymous></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">	repositoryformatversion = 0</span><br><span class="line">	filemode = false</span><br><span class="line">	bare = false</span><br><span class="line">	logallrefupdates = true</span><br><span class="line">	symlinks = false</span><br><span class="line">	ignorecase = true</span><br><span class="line">	autocrlf = false</span><br><span class="line">	safecrlf = false</span><br></pre></td></tr></table></figure>
-
-<p>问题解决，真是人生处处有惊喜，果然还是不该在同一棵树上吊，要多试几棵树。</p>
+        <p>参考：<a href="https://blog.csdn.net/ccq901027/article/details/68059795" target="_blank" rel="noopener">oracle删除表后产生BIN开头的表</a></p>
+<p>从oracle10g开始删除数据库表的时候不是真正删除，而是放到了recyclebin中，这个过程类似windows删除文件放到了回收站。<br>删除表后系统会自动的给这些表重命名，就是你看到的【BIN$】开头的表。<br>通过show recyclebin 命令可以查看删除的表的详细信息，或者查询<br>select * from recyclebin;<br>撤销删除表的命令 flashback table 原表名 to before drop;<br>清空回收站的命令 purge recyclebin;</p>
+<p>如果你想删除的表不经过回收站，可以用 drop table 表名 purge;<br>或者停用数据库的回收功能，需要修改隐藏参数 _recyclebin<br>alert system set ‘_recyclebin’=false; ——10.1版本 </p>
+<h2 id="alert-system-set-recyclebin-off-——10-2版本"><a href="#alert-system-set-recyclebin-off-——10-2版本" class="headerlink" title="alert system set recyclebin =off; ——10.2版本"></a>alert system set recyclebin =off; ——10.2版本</h2><p>版权声明：本文为CSDN博主「chencq_blog」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/ccq901027/article/details/68059795" target="_blank" rel="noopener">https://blog.csdn.net/ccq901027/article/details/68059795</a></p>
+<p>查询所有此类表</p>
+<p>SQL&gt; select * from recyclebin where type=’TABLE’;</p>
+<p>  SQL&gt;PURGE RECYCLEBIN</p>
+<p>用来删除回收站中所有的表</p>
+<p>SQL&gt;PURGE TABLE TABLE_NAME</p>
+<p>用来删除指定的表</p>
+<p>SQL&gt; FLASHBACK TABLE table_name TO BEFORE DROP;</p>
+<p>用来闪回被删除的表  </p>
 
       
     </div>
@@ -345,13 +350,13 @@ var _hmt = _hmt || [];
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/">【Hexo】Spawn failed fatal: LF would be replaced by CRLF</a></p>
+        <p><span>本文标题:</span><a href="/Oracle01/">【Oracle】Oracle问题记录</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Tyler Yang</a></p>
-        <p><span>发布时间:</span>2019-06-25, 00:49:13</p>
-        <p><span>最后更新:</span>2019-06-26, 23:51:35</p>
+        <p><span>发布时间:</span>2019-08-09, 11:48:38</p>
+        <p><span>最后更新:</span>2019-08-09, 13:02:56</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/" title="【Hexo】Spawn failed fatal: LF would be replaced by CRLF">http://yangyunqiang.com/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/　　作者: Tyler Yang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/Oracle01/" title="【Oracle】Oracle问题记录">http://yangyunqiang.com/Oracle01/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/Oracle01/　　作者: Tyler Yang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -364,15 +369,15 @@ var _hmt = _hmt || [];
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/【ArcGIS】空间数据库的迁移/">
-                    【ArcGIS】GIS空间数据库的迁移
+                <a href="/python01/">
+                    【Python】小白学Python遇到的问题整理汇总
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019年6月24日/">
-                    2019年6月24日
+                <a href="/hexo01/">
+                    
                 </a>
             </div>
         
@@ -384,7 +389,7 @@ var _hmt = _hmt || [];
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#alert-system-set-recyclebin-off-——10-2版本"><span class="toc-number">1.</span> <span class="toc-text">alert system set recyclebin =off; ——10.2版本</span></a></li></ol>
         
     </div>
     <style>
@@ -420,7 +425,7 @@ var _hmt = _hmt || [];
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"【Hexo】Spawn failed fatal: LF would be replaced by CRLF　| IT小白的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"【Oracle】Oracle问题记录　| IT小白的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -460,7 +465,7 @@ gitment.render('git')
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/【ArcGIS】空间数据库的迁移/" title="上一篇: 【ArcGIS】GIS空间数据库的迁移">
+            <a href="/python01/" title="上一篇: 【Python】小白学Python遇到的问题整理汇总">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -468,7 +473,7 @@ gitment.render('git')
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019年6月24日/" title="下一篇: 2019年6月24日">
+            <a href="/hexo01/" title="下一篇: ">
                 <i class="fa fa-angle-right"></i>
             </a>
         

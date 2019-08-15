@@ -42,7 +42,7 @@ var _hmt = _hmt || [];
 <meta property="og:image" content="http://yangyunqiang.com/arcgis03/yyqwyn.coding.me/img/1908/ArcGIS03-01.png">
 <meta property="og:image" content="http://yangyunqiang.com/arcgis03/yyqwyn.coding.me/img/1908/ArcGIS03-02.png">
 <meta property="og:image" content="http://yangyunqiang.com/arcgis03/yyqwyn.coding.me/img/1908/ArcGIS03-03.png">
-<meta property="og:updated_time" content="2019-08-09T03:17:57.745Z">
+<meta property="og:updated_time" content="2019-08-09T05:07:55.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ArcGIS10.2安装部分错误汇总">
 <meta name="twitter:description" content="一.错误1911.无法将文件C:\Program Files(x86)\Common Files\Microsoft Shared\Ink\InkDiv.dll注册到类型库中.请于您的技术支持人员联系这是安装Desktop时报的提示，去Shared文件夹下，是的确没有Ink文件夹，创建后，又根据搜到结果说下个dll放进去，好像也不行，然后又听从某博主文章说的，直接忽略，后续好像也没有影响，不了了解">
@@ -220,7 +220,7 @@ var _hmt = _hmt || [];
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS-ArcSDE/">ArcGIS,ArcSDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcMap/">ArcMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcMap/">ArcMap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ArcSDE/">ArcSDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Oracle/">Oracle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日记/">日记</a></li></ul>
                     </div>
                 </section>
                 
@@ -325,7 +325,7 @@ var _hmt = _hmt || [];
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcGIS-ArcSDE/">ArcGIS,ArcSDE</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcGIS/">ArcGIS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ArcSDE/">ArcSDE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -340,7 +340,19 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注意多个数据库实例时候，set　ORACLE_SID=&apos;&apos;,</span><br><span class="line">1、检查sqlnet.ora（WINDOWS下位于%ORACLE_HOME%NETWORKADMIN目录）是否包含这句：SQLNET.AUTHENTICATION_SERVICES=(NTS)，没有的话加上</span><br><span class="line">2、检查登陆windows的用户(administrator或安装oracle时候使用的用户)是不是在包含在ORA_DBA组中，域用户没有连上域服务器时就可能出现这种现象。</span><br><span class="line">3. 要保证 remote_login_passwordfile 参数 = EXCLUSIVE .</span><br><span class="line">4. 看看是否需要使用orapassw生成口令文件</span><br></pre></td></tr></table></figure>
 
 <p>我的问题是第二个，其实就是我本机由于是公司配发的统一机器，是在域用户下，在用户账户管理里面搜不到我的用户，然后我登录公司vpn，然后在搜账户home/yyq ,然后就可以搜到了，加入ora_dba组中，这时就可以断vpn了，sys可以访问sysdba了。</p>
-<h1 id="三-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在"><a href="#三-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在" class="headerlink" title="三.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在"></a>三.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-02.png" alt="image"><br>一看这错误简直高大上，对象不存在，是不是一脸懵，其实吧，是源于第二个错误的报错，导致创建sde一半失败，删了sde用户，然后关了catalog重新操作即可</p>
+<h1 id="三-ArcGIS-无法创建SDE：Failed-to-setup-st-geometry-type"><a href="#三-ArcGIS-无法创建SDE：Failed-to-setup-st-geometry-type" class="headerlink" title="三.ArcGIS 无法创建SDE：Failed to setup st_geometry type."></a>三.ArcGIS 无法创建SDE：Failed to setup st_geometry type.</h1><p>解决方案（<a href="http://blog.csdn.net/editcue/article/details/19037277" target="_blank" rel="noopener">http://blog.csdn.net/editcue/article/details/19037277</a>）：<br>报了类似的错误<br>could not create geodatabase tables and stored procedures<br>Failed to setup st_geometry type.Unable to load Type st_geometry, underlying DBMS error encountered.<br>解决办法：<br><a href="http://support.esri.com/en/knowledgebase/techarticles/detail/38961" target="_blank" rel="noopener">http://support.esri.com/en/knowledgebase/techarticles/detail/38961</a><br>里面说由于有表引用到 st_geometry 导致 st_geometry 创建失败。<br>只需要执行这句sql：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT OWNER, NAME, TYPE FROM DBA_DEPENDENCIES WHERE REFERENCED_OWNER=&apos;MDSYS&apos; AND REFERENCED_NAME  = &apos;ST_GEOMETRY&apos; AND REFERENCED_TYPE  = &apos;TYPE&apos; AND TYPE=&apos;TABLE&apos;;</span><br><span class="line">drop table &quot;tableName&quot; purge；</span><br></pre></td></tr></table></figure>
+
+<p>然后把查到的表drop和purge掉即可。</p>
+<p>如果不用purge会进入recyclebin中，需要查到后删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--查询所有此类表</span><br><span class="line">select * from recyclebin where type=&apos;TABLE&apos;;</span><br><span class="line">--用来删除指定的表</span><br><span class="line">PURGE TABLE TABLE_NAME</span><br></pre></td></tr></table></figure>
+
+<h1 id="四-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在"><a href="#四-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在" class="headerlink" title="四.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在"></a>四.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-02.png" alt="image"><br>一看这错误简直高大上，对象不存在，是不是一脸懵，其实吧，是源于第三个错误的报错，导致创建sde一半失败，删了sde用户，然后关了catalog重新操作即可</p>
+<p>参考链接：<a href="https://support.esri.com/en/technical-article/000011577" target="_blank" rel="noopener">错误：对象INSTANCES_UTIL不存在 </a></p>
+<h1 id="五-dbtune-sde位置"><a href="#五-dbtune-sde位置" class="headerlink" title="五.dbtune.sde位置"></a>五.dbtune.sde位置</h1><p>这个是在配置分区表索引时用到的，尽管还没解决，先记下，在desktop或server的DatabaseSupport\DB2zOS里面</p>
+<h1 id="六-关于分区表（待研究）"><a href="#六-关于分区表（待研究）" class="headerlink" title="六.关于分区表（待研究）"></a>六.关于分区表（待研究）</h1><p>参考链接：<a href="http://desktop.arcgis.com/zh-cn/arcmap/latest/manage-data/using-sql-with-gdbs/spatial-indexes-and-stgeometry.htm" target="_blank" rel="noopener">空间索引和 ST_Geometry</a></p>
+<p><a href="https://blog.csdn.net/linghe301/article/details/7177286" target="_blank" rel="noopener">怎么在ArcSDE中使用Oracle分区表</a></p>
+<p><a href="https://blog.csdn.net/skink/article/details/2343662" target="_blank" rel="noopener">ArcSDE Oracle的存储DBTune配置</a></p>
 <h1 id="最后-完美舒畅"><a href="#最后-完美舒畅" class="headerlink" title="最后.完美舒畅"></a>最后.完美舒畅</h1><p><img src="yyqwyn.coding.me/img/1908/ArcGIS03-03.png" alt="image"></p>
 
       
@@ -353,7 +365,7 @@ var _hmt = _hmt || [];
         <p><span>本文标题:</span><a href="/arcgis03/">ArcGIS10.2安装部分错误汇总</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Tyler Yang</a></p>
         <p><span>发布时间:</span>2019-08-09, 10:07:06</p>
-        <p><span>最后更新:</span>2019-08-09, 11:17:57</p>
+        <p><span>最后更新:</span>2019-08-09, 13:07:55</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/arcgis03/" title="ArcGIS10.2安装部分错误汇总">http://yangyunqiang.com/arcgis03/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yangyunqiang.com/arcgis03/　　作者: Tyler Yang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -367,6 +379,12 @@ var _hmt = _hmt || [];
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/hexo01/">
+                    
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -383,7 +401,7 @@ var _hmt = _hmt || [];
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-错误1911-无法将文件C-Program-Files-x86-Common-Files-Microsoft-Shared-Ink-InkDiv-dll注册到类型库中"><span class="toc-number">1.</span> <span class="toc-text">一.错误1911.无法将文件C:\Program Files(x86)\Common Files\Microsoft Shared\Ink\InkDiv.dll注册到类型库中.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-登录用户不正确，执行（CreateEnterpriseGeodatabase）失败"><span class="toc-number">2.</span> <span class="toc-text">二.登录用户不正确，执行（CreateEnterpriseGeodatabase）失败</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在"><span class="toc-number">3.</span> <span class="toc-text">三.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后-完美舒畅"><span class="toc-number">4.</span> <span class="toc-text">最后.完美舒畅</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-错误1911-无法将文件C-Program-Files-x86-Common-Files-Microsoft-Shared-Ink-InkDiv-dll注册到类型库中"><span class="toc-number">1.</span> <span class="toc-text">一.错误1911.无法将文件C:\Program Files(x86)\Common Files\Microsoft Shared\Ink\InkDiv.dll注册到类型库中.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-登录用户不正确，执行（CreateEnterpriseGeodatabase）失败"><span class="toc-number">2.</span> <span class="toc-text">二.登录用户不正确，执行（CreateEnterpriseGeodatabase）失败</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-ArcGIS-无法创建SDE：Failed-to-setup-st-geometry-type"><span class="toc-number">3.</span> <span class="toc-text">三.ArcGIS 无法创建SDE：Failed to setup st_geometry type.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四-在地理数据库中创建已存储程序失败。Error（-51）DBMS-error-code-4043-ORA-04043对象INSTANCES-UTIL不存在"><span class="toc-number">4.</span> <span class="toc-text">四.在地理数据库中创建已存储程序失败。Error（-51）DBMS error code:4043 ORA-04043对象INSTANCES_UTIL不存在</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五-dbtune-sde位置"><span class="toc-number">5.</span> <span class="toc-text">五.dbtune.sde位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六-关于分区表（待研究）"><span class="toc-number">6.</span> <span class="toc-text">六.关于分区表（待研究）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#最后-完美舒畅"><span class="toc-number">7.</span> <span class="toc-text">最后.完美舒畅</span></a></li></ol>
         
     </div>
     <style>
@@ -459,7 +477,9 @@ gitment.render('git')
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/hexo01/" title="上一篇: ">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -471,7 +491,7 @@ gitment.render('git')
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/arcgis03/">ArcGIS10.2安装部分错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/【Linux】服务器IP端口不通的简单定位解决/">【Linux】服务器IP端口不通的简单定位解决</a></li><li class="post-list-item"><a class="post-list-link" href="/【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明/">【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明</a></li><li class="post-list-item"><a class="post-list-link" href="/【ArcGIS】空间数据库的迁移/">【ArcGIS】GIS空间数据库的迁移</a></li><li class="post-list-item"><a class="post-list-link" href="/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/">【Hexo】Spawn failed fatal: LF would be replaced by CRLF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019年6月24日/">2019年6月24日</a></li><li class="post-list-item"><a class="post-list-link" href="/Hello,New Life/">Hello , New Life!</a></li><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/Windows-Windows01/">[Windows]Windows01</a></li><li class="post-list-item"><a class="post-list-link" href="/python01/">【Python】小白学Python遇到的问题整理汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/Oracle01/">【Oracle】Oracle问题记录</a></li><li class="post-list-item"><a class="post-list-link" href="/hexo01/">hexo01</a></li><li class="post-list-item"><a class="post-list-link" href="/arcgis03/">ArcGIS10.2安装部分错误汇总</a></li><li class="post-list-item"><a class="post-list-link" href="/【Linux】服务器IP端口不通的简单定位解决/">【Linux】服务器IP端口不通的简单定位解决</a></li><li class="post-list-item"><a class="post-list-link" href="/【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明/">【ArcGIS】地图加载慢问题处理及ArcMAP插件PerfQA-Analyzer使用说明</a></li><li class="post-list-item"><a class="post-list-link" href="/【ArcGIS】空间数据库的迁移/">【ArcGIS】GIS空间数据库的迁移</a></li><li class="post-list-item"><a class="post-list-link" href="/【Hexo】Spawn-failed-fatal-LF-would-be-replaced-by-CRLF/">【Hexo】Spawn failed fatal: LF would be replaced by CRLF</a></li><li class="post-list-item"><a class="post-list-link" href="/2019年6月24日/">2019年6月24日</a></li><li class="post-list-item"><a class="post-list-link" href="/Hello,New Life/">Hello , New Life!</a></li><li class="post-list-item"><a class="post-list-link" href="/hello-world/">Hello World</a></li></ul>
 
 
 
